@@ -31,4 +31,10 @@ if ($row = mysqli_fetch_assoc($result)) {
                 "email" => $row['email']
             ]
         ]);
-        
+    } else {
+        echo json_encode(["error" => "Incorrect password."]);
+    }
+} else {
+    echo json_encode(["error" => "Email not found."]);
+}
+?>
