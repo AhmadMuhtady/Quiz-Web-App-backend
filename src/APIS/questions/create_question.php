@@ -36,3 +36,13 @@ $insert_question_stmt = mysqli_prepare($connection, $insert_question_sql);
 if ($insert_question_stmt) {
     mysqli_stmt_bind_param($insert_question_stmt, "is", $quiz_id, $question_text);
     mysqli_stmt_execute($insert_question_stmt);
+
+    if (mysqli_stmt_affected_rows($insert_question_stmt) > 0) {
+        echo json_encode(["success" => true, "message" => "Question created successfully!"]);
+    } else {
+        echo json_encode(["error" => "Failed to create question."]);
+    }
+} else {
+    echo json_encode(["error" => "Failed to prepare insert statement."]);
+}
+?>
