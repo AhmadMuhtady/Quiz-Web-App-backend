@@ -8,14 +8,14 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 include "./../../../confiq/connect.php";
 
 $title = $_POST['title'] ?? null;
-$discription = $_POST['discription'] ?? null;
+$description = $_POST['description'] ?? null;
 $created_by = $_POST['created_by'] ?? null;
 
-if (empty($title) || empty($discription) || empty($created_by)) {   
+if (empty($title) || empty($description) || empty($created_by)) {   
     echo json_encode(["error" => "Missing required fields"]);
     exit;
 }
-$sql = "INSERT INTO quizzes (title, discription, created_by) VALUES (?, ?, ?)";
+$sql = "INSERT INTO quizzes (title, description, created_by) VALUES (?, ?, ?)";
 $stmt = mysqli_prepare($connection, $sql);
 
 if ($stmt) {
