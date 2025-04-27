@@ -6,3 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 include "../../../confiq/connect.php";
+
+$quizzes = $_POST["quiz_id"] ?? null;
+$question_text = $_POST["question_text"] ?? null;
+
