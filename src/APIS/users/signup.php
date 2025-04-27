@@ -18,3 +18,7 @@ if (empty($first_name) || empty($last_name) || empty($email) || empty($password_
     exit;
 }
 $check_sql = "SELECT * FROM users WHERE email = ?";
+$check_stmt = mysqli_prepare($connection, $check_sql);
+mysqli_stmt_bind_param($check_stmt, "s", $email);
+mysqli_stmt_execute($check_stmt);
+$check_result = mysqli_stmt_get_result($check_stmt);
