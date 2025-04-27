@@ -9,7 +9,7 @@ include "../../../confiq/connect.php";
 
 $question_id = $_POST["question_id"] ?? null;
 $option_text = $_POST["option_text"] ?? null;
-$is_correct = $_POST["is_correct"] ?? null;
+$is_correct = isset($_POST["is_correct"]) ? (int)$_POST["is_correct"] : null;
 
 if (empty($question_id) || empty($option_text) || $is_correct === null) {
     echo json_encode(["error"=> "question_id, option_text and is_correct are required"]);
