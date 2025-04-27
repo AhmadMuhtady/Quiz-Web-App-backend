@@ -15,3 +15,9 @@ if (empty($question_id) || empty($option_text) || empty($is_correct)) {
     echo json_encode(["error"=> "question_id, question_text and is_correct are required"]);
     exit;
 }
+
+if (!in_array($is_correct, [0, 1], true)) {
+    echo json_encode(["error" => "is_correct must be either 0 (false) or 1 (true)."]);
+    exit;
+}
+
