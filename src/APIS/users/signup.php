@@ -6,7 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
-include '../../../../confiq/connect.php';
+include '../../../confiq/connect.php';
 
 $first_name = $_Post['first_name'] ?? null;
 $last_name = $_Post['last_name'] ?? null;
