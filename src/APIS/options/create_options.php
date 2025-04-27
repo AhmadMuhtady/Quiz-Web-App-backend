@@ -21,3 +21,15 @@ if (!in_array($is_correct, [0, 1], true)) {
     exit;
 }
 
+$check_question_sql = "SELECT question_id FROM questions WHERE question_id = ?";
+$check_question_stmt = mysqli_prepare($connection, $check_question_sql);
+if ($check_question_stmt) {
+    mysqli_stmt_bind_param($check_question_stmt, "i", $question_id);
+    mysqli_stmt_execute($check_question_stmt);
+    mysqli_stmt_store_result($check_question_stmt);
+
+    if (mysqli_stmt_num_rows($check_question_stmt) === 0) {
+        echo json_encode(["error" => "Question not found. Invalid question_id."]);
+        exit;
+    }
+}
