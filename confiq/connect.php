@@ -1,6 +1,6 @@
 <?php
 $host = 'localhost';
-$db = 'db_web_app';
+$db = 'quiz_web_app';
 $user = 'root';
 $pass = '';
 $charset = 'utf8mb4';
