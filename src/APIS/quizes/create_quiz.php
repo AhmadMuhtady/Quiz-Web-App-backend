@@ -14,4 +14,16 @@ $created_by = $_POST['created_by'] ?? null;
 if (empty($title) || empty($discription) || empty($created_by)) {   
     echo json_encode(["error" => "Missing required fields"]);
     exit;
-    
+}
+$sql = "INSERT INTO quizzes (title, discription, created_by) VALUES (?, ?, ?)";
+$stmt = mysqli_prepare($connection, $sql);
+
+if ($stmt) {
+    mysqli_stmt_bind_param($stmt, "ssi", $title, $description, $created_by);
+    mysqli_stmt_execute($stmt);
+
+    echo json_encode(["success" => true, "message" => "Quiz created successfully!"]);
+} else {
+    echo json_encode(["error" => "Failed to prepare statement."]);
+}
+?>
