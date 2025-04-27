@@ -29,3 +29,10 @@ if ($check_quiz_stmt) {
         echo json_encode(["error" => "Failed to prepare quiz check statement."]);
         exit;
     }
+
+    $insert_question_sql = "INSERT INTO questions (quiz_id, question_text) VALUES (?, ?)";
+$insert_question_stmt = mysqli_prepare($connection, $insert_question_sql);
+
+if ($insert_question_stmt) {
+    mysqli_stmt_bind_param($insert_question_stmt, "is", $quiz_id, $question_text);
+    mysqli_stmt_execute($insert_question_stmt);
