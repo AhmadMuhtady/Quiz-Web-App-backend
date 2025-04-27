@@ -12,7 +12,7 @@ $option_text = $_POST["option_text"] ?? null;
 $is_correct = $_POST["is_correct"] ?? null;
 
 if (empty($question_id) || empty($option_text) || empty($is_correct)) {
-    echo json_encode(["error"=> "question_id, question_text and is_correct are required"]);
+    echo json_encode(["error"=> "question_id, option_text and is_correct are required"]);
     exit;
 }
 
