@@ -28,3 +28,19 @@ if (mysqli_num_rows($check_result) > 0) {
     exit;
 }
 $hashed_password = password_hash($password_hash, PASSWORD_DEFAULT);
+$insert_sql = "INSERT INTO users (first_name,last_name, email, password_hash) VALUES (?, ?,?, ?)";
+$insert_stmt = mysqli_prepare($connection, $insert_sql);
+
+if ($insert_stmt) {
+    mysqli_stmt_bind_param($insert_stmt, "ssss", $first_name,$last_name, $email, $hashed_password);
+    mysqli_stmt_execute($insert_stmt);
+
+    if (mysqli_stmt_affected_rows($insert_stmt) > 0) {
+        echo json_encode(["success" => true, "message" => "User registered successfully!"]);
+    } else {
+        echo json_encode(["error" => "Failed to register user."]);
+    }
+} else {
+    echo json_encode(["error" => "Failed to prepare insert statement."]);
+}
+?>
