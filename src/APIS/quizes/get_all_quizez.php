@@ -2,7 +2,7 @@
 header('Content-Type: application/json');
 include "./../../../confiq/connect.php";
 
-$sql - 'SELECT * FROM quizzes';
+$sql = 'SELECT * FROM quizzes';
 $result = mysqli_query($connection, $sql);
 
 $quizzes = [];
