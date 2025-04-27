@@ -25,4 +25,7 @@ if ($check_quiz_stmt) {
     if (mysqli_stmt_num_rows($check_quiz_stmt) === 0) {
         echo json_encode(["error" => "Quiz not found. Invalid quiz_id."]);
         exit;
+    }} else {
+        echo json_encode(["error" => "Failed to prepare quiz check statement."]);
+        exit;
     }
