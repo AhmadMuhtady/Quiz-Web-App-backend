@@ -16,3 +16,19 @@ if (empty($email) || empty($password_hash)) {
 }
 
 $sql = "SELECT * FROM users WHERE email = ?";
+$stmt = mysqli_prepare($connection, $sql);
+mysqli_stmt_bind_param($stmt, "s", $email);
+mysqli_stmt_execute($stmt);
+$result = mysqli_stmt_get_result($stmt);
+
+if ($row = mysqli_fetch_assoc($result)) {
+    if (password_verify($password_hash, $row['password_hash'])) {
+        echo json_encode([
+            "success" => true,
+            "message" => "Login successful!",
+            "user" => [
+                "user_id" => $row['user_id'],
+                "email" => $row['email']
+            ]
+        ]);
+        
