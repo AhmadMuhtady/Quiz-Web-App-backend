@@ -1,3 +1,4 @@
+<?php
 header('Content-Type: application/json');
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -6,4 +7,4 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 }
 include "./../../../confiq/connect.php";
 
-$quiz_id = $POST['quiz_id'] ?? null
+$quiz_id = $POST['quiz_id'] ?? null;
