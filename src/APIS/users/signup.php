@@ -27,3 +27,4 @@ if (mysqli_num_rows($check_result) > 0) {
     echo json_encode(["error" => "Email already registered."]);
     exit;
 }
+$hashed_password = password_hash($password_hash, PASSWORD_DEFAULT);
