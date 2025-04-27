@@ -9,3 +9,8 @@ include "../../../confiq/connect.php";
 
 $email = $_POST['email'] ?? null;
 $password_hash = $_POST['password_hash'] ?? null;
+
+if (empty($email) || empty($password_hash)) {
+    echo json_encode(["error" => "Email and password are required."]);
+    exit;
+}
