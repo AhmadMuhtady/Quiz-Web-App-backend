@@ -14,6 +14,9 @@ if (empty($question_id) || empty($question_text)) {
     echo json_encode(["error" => "Missing required fields."]);
     exit;
 }
+$update_sql = "UPDATE questions SET question_text = ? WHERE question_id = ?";
+$stmt = mysqli_prepare($connection, $update_sql);
+
 if ($stmt) {
     mysqli_stmt_bind_param($stmt, "si", $question_text, $question_id);
     mysqli_stmt_execute($stmt);
