@@ -8,10 +8,10 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
 include '../../../confiq/connect.php';
 
-$first_name = $_Post['first_name'] ?? null;
-$last_name = $_Post['last_name'] ?? null;
-$email = $_Post['email'] ?? null;
-$password_hash = $_Post['password_hash'] ?? null;
+$first_name = $_POST['first_name'] ?? null;
+$last_name = $_POST['last_name'] ?? null;
+$email = $_POST['email'] ?? null;
+$password_hash = $_POST['password_hash'] ?? null;
 
 if (empty($first_name) || empty($last_name) || empty($email) || empty($password_hash)) {
     echo json_encode(["error" => "All fields are required."]);
