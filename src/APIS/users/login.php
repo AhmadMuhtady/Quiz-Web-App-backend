@@ -6,3 +6,6 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 include "../../../confiq/connect.php";
+
+$email = $_POST['email'] ?? null;
+$password_hash = $_POST['password_hash'] ?? null;
