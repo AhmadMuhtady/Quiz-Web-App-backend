@@ -17,4 +17,4 @@ if (empty($first_name) || empty($last_name) || empty($email) || empty($password_
     echo json_encode(["error" => "All fields are required."]);
     exit;
 }
-$check_sql =
+$check_sql = "SELECT * FROM users WHERE email = ?";
