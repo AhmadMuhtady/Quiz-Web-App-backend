@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 }
 include "./../../../confiq/connect.php";
 
-$quiz_id = $POST['quiz_id'] ?? null;
+$quiz_id = $_POST['quiz_id'] ?? null;
 if (empty($quiz_id)) {
     echo json_encode(["error" => "quiz_id is required."]);
     exit;
