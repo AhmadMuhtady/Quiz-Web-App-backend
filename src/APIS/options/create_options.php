@@ -32,4 +32,7 @@ if ($check_question_stmt) {
         echo json_encode(["error" => "Question not found. Invalid question_id."]);
         exit;
     }
+} else {
+    echo json_encode(["error" => "Failed to prepare question check statement."]);
+    exit;
 }
