@@ -14,3 +14,5 @@ if (empty($email) || empty($password_hash)) {
     echo json_encode(["error" => "Email and password are required."]);
     exit;
 }
+
+$sql = "SELECT * FROM users WHERE email = ?";
