@@ -22,3 +22,8 @@ $check_stmt = mysqli_prepare($connection, $check_sql);
 mysqli_stmt_bind_param($check_stmt, "s", $email);
 mysqli_stmt_execute($check_stmt);
 $check_result = mysqli_stmt_get_result($check_stmt);
+
+if (mysqli_num_rows($check_result) > 0) {
+    echo json_encode(["error" => "Email already registered."]);
+    exit;
+}
