@@ -36,3 +36,20 @@ if ($check_question_stmt) {
     echo json_encode(["error" => "Failed to prepare question check statement."]);
     exit;
 }
+
+$insert_option_sql = "INSERT INTO options (question_id, option_text, is_correct) VALUES (?, ?, ?)";
+$insert_option_stmt = mysqli_prepare($connection, $insert_option_sql);
+
+if ($insert_option_stmt) {
+    mysqli_stmt_bind_param($insert_option_stmt, "isi", $question_id, $option_text, $is_correct);
+    mysqli_stmt_execute($insert_option_stmt);
+
+    if (mysqli_stmt_affected_rows($insert_option_stmt) > 0) {
+        echo json_encode(["success" => true, "message" => "Option created successfully!"]);
+    } else {
+        echo json_encode(["error" => "Failed to create option."]);
+    }
+} else {
+    echo json_encode(["error" => "Failed to prepare insert statement."]);
+}
+?>
